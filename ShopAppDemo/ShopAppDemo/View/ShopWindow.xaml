@@ -1,0 +1,351 @@
+﻿<Window x:Class="ShopAppDemo.View.ShopWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopAppDemo.View"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        Title="ShopWindow" Height="461.208" Width="873.623">
+    <Grid>
+
+        <materialDesign:DialogHost
+        Identifier="RootDialog"
+        DialogTheme="Inherit"
+        SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
+
+            <materialDesign:DrawerHost
+            IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+                <materialDesign:DrawerHost.LeftDrawerContent>
+                    <DockPanel MinWidth="220">
+                        <ToggleButton 
+                        Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                        DockPanel.Dock="Top"
+                        HorizontalAlignment="Right" 
+                        Margin="16"
+                        IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}"/>
+
+                        <TextBox 
+                        x:Name="DemoItemsSearchBox"
+                        Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}"
+                        DockPanel.Dock="Top"
+                        Margin="16, 4"
+                        Width="200"
+                        materialDesign:HintAssist.Hint="Search"
+                        materialDesign:HintAssist.IsFloating="True"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                        materialDesign:TextFieldAssist.DecorationVisibility="Collapsed"
+                        materialDesign:TextFieldAssist.TextFieldCornerRadius="4"/>
+
+                        <StackPanel>
+
+
+                            <TextBox 
+                                         Margin="0 5 0 0"
+                                            Width="200"
+                                    Text="{Binding Login}"
+                              Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                              VerticalAlignment="Top"
+                              Height="50"
+                              AcceptsReturn="True"
+                              TextWrapping="Wrap"
+                              VerticalScrollBarVisibility="Auto"
+                              materialDesign:HintAssist.Hint="Login"
+                              IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" />
+
+                            <PasswordBox x:Name="Password_singIn"
+                                    Margin="0 5 0 0"
+                                            Width="200"
+                                    KeyDown="PasswordBox_KeyDown"
+                                 Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                                 VerticalAlignment="Top"
+                                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
+                                 materialDesign:HintAssist.Hint="Password" />
+
+                            <Button         
+                                            Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                            Background="{StaticResource PrimaryBlackBrush}"
+                                            Margin="0 5 0 0"
+                                            Width="200"
+                                            Content="SingIn"
+                                            Command="{Binding SingInTabCommand}"
+                                            />
+
+                            <Button         
+                                            Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                            Background="{StaticResource PrimaryBlackBrush}"
+                                            Margin="0 5 0 0"
+                                            Width="200"
+                                            Content="SingUp"
+                                            Command="{Binding SingUpTabCommand}"
+                                            />
+                            <Button        
+                                            Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                            Background="{StaticResource PrimaryBlackBrush}"
+                                            Width="200"
+                                            Margin="0 5 0 0"
+                                            Content="Contacts" 
+                                            />
+                        </StackPanel>
+
+                    </DockPanel>
+                </materialDesign:DrawerHost.LeftDrawerContent>
+
+                <DockPanel>
+                    <materialDesign:ColorZone
+                    Background="{StaticResource PrimaryBlackBrush}"
+                    Padding="16"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Mode="PrimaryMid"
+                    DockPanel.Dock="Top" Margin="0,0,2.453,0">
+                        <DockPanel >
+                            <StackPanel Orientation="Horizontal">
+                                <ToggleButton
+                                x:Name="MenuToggleButton"
+                                Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                                IsChecked="False"
+                                AutomationProperties.Name="HamburgerToggleButton"
+                                />
+
+                                <ComboBox ItemsSource="{Binding Categories}"
+                                           Background="{StaticResource PrimaryBlackBrush}"
+                                           SelectedIndex="0"
+                                           Margin="25 0 0 0"
+                                           BorderThickness="0"
+                                           materialDesign:ColorZoneAssist.Mode="Standard"
+                                           materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource MaterialDesignPaper}"
+                                           BorderBrush="{DynamicResource MaterialDesignPaper}"
+                                           SelectedItem="{Binding SelectCategory}">
+                                    <ComboBox.ItemTemplate >
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <ComboBoxItem Content="{Binding Name}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate >
+                                </ComboBox>
+
+                                <Label  Background="{StaticResource MaterialDesignBackground}"
+                                    Margin="20 0 0 0" Width="100" Content="{Binding AccountName}"/>
+
+                                <materialDesign:ColorZone
+                                    Mode="Standard"
+                                    Padding="8 4 8 4"
+                                    CornerRadius="2"
+                                    Panel.ZIndex="1"
+                                    Margin="180 0 0 0"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="25*"/>
+                                            <RowDefinition Height="7*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition
+                                                 Width="Auto" />
+                                            <ColumnDefinition
+                                                 Width="*" />
+                                            <ColumnDefinition
+                                              Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button
+            Style="{DynamicResource MaterialDesignToolButton}" Margin="0,0,0.453,-0.302" Grid.RowSpan="2">
+                                            <materialDesign:PackIcon
+                                             Kind="Search"
+                                             Opacity=".56" />
+                                        </Button>
+                                        <TextBox
+            Grid.Column="1"
+            Margin="7.547,4,32.358,3.698"
+            materialDesign:HintAssist.Hint="Build a search bar"
+            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+            BorderThickness="0"
+            MinWidth="200"
+            VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.RowSpan="2" 
+            />
+                                        <Button
+            Style="{DynamicResource MaterialDesignToolButton}"
+            Grid.Column="2" Margin="0.245,0,0.358,-0.302" Grid.RowSpan="2">
+
+                                        </Button>
+                                    </Grid>
+                                </materialDesign:ColorZone>
+
+                                <materialDesign:PopupBox
+                                    DockPanel.Dock="Right"
+                                    Margin=" 20  0 0 0"
+                                    PlacementMode="BottomAndAlignRightEdges"
+                                    StaysOpen="False">
+                                    <StackPanel>
+                                        <StackPanel
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        Margin="10">
+                                            <TextBlock
+                                        Text="Light"
+                                        Margin="0 0 10 0"/>
+                                            <ToggleButton
+                                        x:Name="DarkModeToggleButton"
+                                                Style="{DynamicResource MaterialDesignSwitchAccentToggleButton}"
+                                    Background="{StaticResource PrimaryBlackBrush}"
+                                        />
+                                            <Separator/>
+                                            <TextBlock
+                                        Text="Dark"
+                                        Margin="10 0 0 0"/>
+                                        </StackPanel>
+
+                                        <StackPanel
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        Margin="10">
+                                            <TextBlock
+                                        Text="Ru"
+                                        Margin="0 0 10 0"/>
+
+                                            <ToggleButton
+                                        x:Name="LanguacheModeToggleButton"
+                                            Style="{DynamicResource MaterialDesignSwitchAccentToggleButton}"
+                                    Background="{StaticResource PrimaryBlackBrush}"
+                                        />
+                                            <Separator/>
+
+                                            <TextBlock
+                                         Text="Eng"
+                                         Margin="10 0 0 0"/>
+                                        </StackPanel>
+
+                                        <Separator/>
+
+                                        <Button
+                                    Content="Goodbye"
+                                   />
+
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+
+                                <Button  Background="{StaticResource PrimaryBlackBrush}" 
+                                         Content="Basket"
+                                         Command="{Binding AccountBacketButtonCommand}"
+                                         />
+
+                            </StackPanel>
+
+                        </DockPanel>
+                    </materialDesign:ColorZone>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="47*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <ScrollViewer
+                        x:Name="MainScrollViewer"
+                        Grid.Row="1"
+                        materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
+                           
+                        HorizontalScrollBarVisibility="{Binding SelectedItem.HorizontalScrollBarVisibilityRequirement, FallbackValue=Disabled}"
+                        VerticalScrollBarVisibility="{Binding SelectedItem.VerticalScrollBarVisibilityRequirement, FallbackValue=Disabled}" Grid.ColumnSpan="2" Margin="0,0.094,0.453,173.679" Grid.RowSpan="2" >
+                            <ContentControl 
+                            DataContext="{Binding SelectedItem}"
+                            Margin="{Binding MarginRequirement, FallbackValue=17}"
+                            Content="{Binding Content, UpdateSourceTrigger=PropertyChanged, FallbackValue={x:Null}}"/>
+                        </ScrollViewer >
+                        <!---Card  !-->
+
+
+                        <ListBox Grid.Column="0" ItemsSource="{Binding Products}"
+                                 Margin="40" 
+                                 Grid.ColumnSpan="2" Grid.RowSpan="2"
+                                 SelectedItem="{Binding SelectedProduct}"
+                                 >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+
+                                    <materialDesign:Card
+                                        Width="200"
+                                        Margin="0 50 0 0">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition
+                                                 Height="70*" />
+                                                <RowDefinition
+                                                 Height="15*" />
+                                                <RowDefinition
+                                                 Height="15*" />
+                                            </Grid.RowDefinitions>
+                                            <Image
+                                     Source="{Binding Image}"
+                                     Height="140"
+                                     Width="196"
+                                     Stretch="Uniform" 
+                                     />
+
+                                            <StackPanel
+                                    Grid.Row="1"
+                                    Margin="8 24 8 0">
+                                                <TextBlock
+                                     FontWeight="Bold" Text="{Binding Price}" />
+                                                <TextBlock
+                                     TextWrapping="Wrap"
+                                     VerticalAlignment="Center"
+                                           Text="{Binding Name}" />
+                                            </StackPanel>
+                                            <StackPanel
+                                    HorizontalAlignment="Right"
+                                    Grid.Row="2"
+                                    Orientation="Horizontal"
+                                    Margin="8">
+                                                <Button
+                                                    Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                                    Width="30"
+                                                    Padding="2 0 2 0"
+                                                    materialDesign:RippleAssist.IsCentered="True">
+                                                    <materialDesign:PackIcon
+                                                     Kind="Heart"/>
+                                                </Button>
+                                                <materialDesign:PopupBox
+                                         Padding="2 0 2 0">
+                                                    <StackPanel>
+                                                        <Button
+                                              Content="Add to Baket"
+                                              Command="{Binding DataContext.AddToBasketButtonCommand,RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                            
+                                             />
+                                                        <Button
+                                              Content="Options"  />
+                                                    </StackPanel>
+                                                </materialDesign:PopupBox>
+                                            </StackPanel>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+
+                </DockPanel>
+            </materialDesign:DrawerHost>
+        </materialDesign:DialogHost>
+
+    </Grid>
+</Window>
