@@ -10,3 +10,15 @@ C:\Users\hp\source\repos\ShopAppDemo\ShopAppDemo.DAL\obj\Debug\ShopAppDemo.DAL.c
 C:\Users\hp\source\repos\ShopAppDemo\ShopAppDemo.DAL\obj\Debug\ShopAppDemo.DAL.dll
 C:\Users\hp\source\repos\ShopAppDemo\ShopAppDemo.DAL\obj\Debug\ShopAppDemo.DAL.pdb
 C:\Users\hp\source\repos\ShopAppDemo\ShopAppDemo.DAL\obj\Debug\ShopAppDemo.DAL.csprojAssemblyReference.cache
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\bin\Debug\ShopAppDemo.DAL.dll.config
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\bin\Debug\ShopAppDemo.DAL.dll
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\bin\Debug\ShopAppDemo.DAL.pdb
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\bin\Debug\EntityFramework.dll
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\bin\Debug\EntityFramework.xml
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\obj\Debug\ShopAppDemo.DAL.csproj.AssemblyReference.cache
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\obj\Debug\ShopAppDemo.DAL.csproj.CoreCompileInputs.cache
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\obj\Debug\ShopAppDemo.DAL.csproj.CopyComplete
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\obj\Debug\ShopAppDemo.DAL.dll
+C:\Users\hp\Desktop\wpf shop\shop_wpf\ShopAppDemo\ShopAppDemo.DAL\obj\Debug\ShopAppDemo.DAL.pdb

@@ -220,7 +220,7 @@ namespace ShopAppDemo.ViewModel
                     }
                     else
                     {
-                        MessageBox.Show("Yuo need registration!");
+                        MessageBox.Show("You need to registration!");
                     }
                     IsLoad = false;
                 }));
